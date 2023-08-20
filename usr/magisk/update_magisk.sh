@@ -9,18 +9,18 @@ ver="$(cat "$DIR/magisk_version" 2>/dev/null || echo -n 'none')"
 if [ "x$1" = "xcanary" ]
 then
 	nver="canary"
-	magisk_link="https://github.com/HuskyDG/magisk-files/raw/main/app-release.apk"
+	magisk_link="https://github.com/vvb2060/magisk_files/raw/alpha/app-release.apk"
 elif [ "x$1" = "xlocal" ]
 then
 	nver="local"
-	magisk_link="https://github.com/HuskyDG/magisk-files/raw/main/app-release.apk"
+	magisk_link="https://github.com/vvb2060/magisk_files/raw/alpha/app-release.apk"
 else
 	if [ "x$1" = "x" ]; then
-		nver="$(curl -s https://github.com/HuskyDG/magisk-files/raw/main/stable.json | jq '.magisk.version' | cut -d '"' -f 2)"
+		nver="$(curl -s https://github.com/vvb2060/magisk_files/raw/alpha/alpha.json | jq '.magisk.version' | cut -d '"' -f 2)"
 	else
 		nver="$1"
 	fi
-	magisk_link="https://github.com/HuskyDG/magisk-files/raw/main/app-release.apk"
+	magisk_link="https://github.com/vvb2060/magisk_files/raw/alpha/app-release.apk"
 fi
 
 if [ \( -n "$nver" \) -a \( "$nver" != "$ver" \) -o ! \( -f "$DIR/arm/magiskinit64" \) -o \( "$nver" = "canary" \) -o \( "$nver" = "local" \) ]
